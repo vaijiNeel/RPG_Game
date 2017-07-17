@@ -1,0 +1,56 @@
+body {
+    background-image: url("../images/StarWars.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover !important;    
+    max-width: 100%;
+    /*min-height: 100%;*/
+    margin-left: 7px;    
+}
+
+h1 {
+	text-align: right;
+	margin-right: 0;
+	padding-top: 1%;
+	padding-right: 10%;
+	font-family: Arial, "Helvetica Neue", Helvetica, "sans serif";
+	font-weight: bold;
+	font-size: 35px;
+	letter-spacing: 5px;
+}
+
+h3 {
+	clear: both;
+	font-family: "Helvetica Neue", Helvetica, "sans serif";
+	font-size: 25px;
+	letter-spacing: 5px;
+	padding-top: 5px;
+}
+
+h6 {
+	text-align: center;	
+	font-color: black;
+}
+
+a {
+	text-decoration: none;
+}
+
+.subDivClassRow1CharsImgs, .subDivContainerChr, .subDivContainerEnmy, .subDivContainerDfndr {
+	float: left;
+	background: white;
+	border: 2px solid green;
+}
+
+.row11Txt {
+	clear: both;
+}
+
+.imgClassRow1Chars, .imgClassYourChar, .imgClassEnmyChar, .imgClassDfndrChar {
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 150px;
+	height: 100px;
+}
+
+

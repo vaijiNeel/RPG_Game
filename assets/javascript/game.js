@@ -76,7 +76,7 @@
 			"imgClassRow1Chars", "subDivClassRow1CharsImgs", "divClassRow1CharsImgs");
 		addCharacters("luke","assets/images/luke.jpg", "100", "charName2", "charHP2", 
 			"imgClassRow1Chars", "subDivClassRow1CharsImgs", "divClassRow1CharsImgs");
-		addCharacters("rey","assets/images/rey.jpg", "150", "charName3", "charHP3", 
+		addCharacters("rey","assets/images/rey.png", "150", "charName3", "charHP3", 
 			"imgClassRow1Chars", "subDivClassRow1CharsImgs", "divClassRow1CharsImgs");
 		addCharacters("han-solo","assets/images/han-solo.jpg", "180", "charName4", "charHP4", 
 			"imgClassRow1Chars", "subDivClassRow1CharsImgs", "divClassRow1CharsImgs");
@@ -316,12 +316,12 @@ $(document).ready(function() {
 			// alert("inside else - luke");
 		}
 		if(playerName==="rey") {
-			addCharacters("rey","assets/images/rey.jpg", "150", "charName3", "charHP3", 
+			addCharacters("rey","assets/images/rey.png", "150", "charName3", "charHP3", 
 				"imgClassYourChar", "subDivContainerChr", "divClassYourCharImg");		
 			// alert("inside if true - rey");
 		}
 		else {
-			addCharacters("rey","assets/images/rey.jpg", "150", "charName3", "charHP3", 
+			addCharacters("rey","assets/images/rey.png", "150", "charName3", "charHP3", 
 				"imgClassEnmyChar", "subDivContainerEnmy", "divClassEnemyCharImgs");
 			// alert("inside else - rey");
 		}
@@ -368,7 +368,7 @@ $(document).ready(function() {
 		}
 		else if(playerName==="rey") {
 			$("#"+playerNameId).parent().remove();
-			addCharacters("rey","assets/images/rey.jpg", "150", "charName3", "charHP3", 
+			addCharacters("rey","assets/images/rey.png", "150", "charName3", "charHP3", 
 				"imgClassDfndrChar", "subDivContainerDfndr", "divClassDfndrCharImg");		
 			// alert("inside if true - rey");
 		}

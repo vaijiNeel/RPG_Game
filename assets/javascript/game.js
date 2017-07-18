@@ -1,5 +1,6 @@
 
-	var yourCharName = "", dfndrName = "";
+	var yourCharName = "", dfndrName = "", n=1, defeatFlag = true;
+	var yourCharID = "", dfndrID = "";
 	var characters = {
 		leiaChar: {
 			name: "leia",
@@ -224,7 +225,7 @@
 			", dfndrCharCntrAPwr = " + dfndrCharCntrAPwr);
 
 		//check health point is > 0
-		if((yourCharHlthPts>0) && (dfndrCharHlthPts>0)) {
+		if((yourCharHlthPts>0) && (dfndrCharHlthPts>0) && (n<4)) {
 			//display attack pwr and counter attk pwr
 			displayAttackPwr(dfndrName, yourCharNewAPwr);
 			displayCounterAttackPwr(dfndrName, dfndrCharCntrAPwr);			
@@ -244,29 +245,51 @@
 			//add your attack power
 			console.log("yourCharNewAPwr = " + yourCharNewAPwr + ", yourCharAPwr = " + yourCharAPwr);
 			yourCharNewAPwr += yourCharAPwr;
-			setNewAttackPwr(yourPropName, yourCharNewAPwr);
-
-			//check hlth pts is <= 0
-			if(yourCharHlthPts<=0) {
-			//game over
-			//display restart button
-			}
-			else if(dfndrCharHlthPts<=0) {
-				//disappear enemy
-			};
+			setNewAttackPwr(yourPropName, yourCharNewAPwr);			
 		}
-		// else if(yourCharHlthPts<=0) {
-		// 	//game over
-		// 	//display restart button
-		// }
-		// else if(dfndrCharHlthPts<=0) {
-		// 	//disappear enemy
-		// };
+		
+		//check hlth pts is <= 0		
+		if(yourCharHlthPts<=0) {
+			//game over
+			$(".pTagAttackPwr").text("");
+			$(".pTagCounterAttackPwr").text("You lost!!! Game over!!!");
+			$(".resetGameClassName").show();				
+			//display restart button
+		}
+		else if(dfndrCharHlthPts<=0) {
+			//disappear enemy
+			n++;
+			console.log("n = " + n);
+			if(n>3) {
+				$(".pTagAttackPwr").text("");
+				if(yourCharHlthPts>0){				
+					$(".pTagCounterAttackPwr").text("You won!!! Game over!!!");				
+				}				
+				$(".resetGameClassName").show();
+			}
+			else {
+				$("#"+dfndrID).parent().remove();
+				$(".pTagAttackPwr").text("");
+				$(".pTagCounterAttackPwr").text("You have defeated " + dfndrName + 
+					", you can choose to fight another enemy.");
+			}
+		}
+		if(n>3) {
+			$(".pTagAttackPwr").text("");
+			if(yourCharHlthPts>0){				
+				$(".pTagCounterAttackPwr").text("You won!!! Game over!!!");				
+			}
+			else if(dfndrCharHlthPts>0){
+				$(".pTagCounterAttackPwr").text("You lost!!! Game over!!!");
+			}
+			$(".resetGameClassName").show();			
+		}		
 }
 
 // ------------------ execution start -------------------
 
 $(document).ready(function() {
+	$(".resetGameClassName").hide();
 	// call function to create 4 characters
 	createInitialChars();	
 
@@ -347,9 +370,10 @@ $(document).ready(function() {
 	//-----------------------------event to pick defender character-------------------------	
 	$(document).on("click", ".imgClassEnmyChar", function() {
 		// console.log("dfndr this = " + this);
-
+		$(".pTagCounterAttackPwr").text("");
 		//get character name and its id
 		var playerNameId = $(this).siblings('.chrName').attr('id');
+		dfndrID = playerNameId;
 		var playerName = $("#"+playerNameId).text();
 		dfndrName = playerName;
 		// alert("sibling name id = " + playerNameId + " , name = " + playerName);
@@ -387,7 +411,15 @@ $(document).ready(function() {
 	});
 
 	$(".attack").on("click", function() {
-		attackClicked();
+		//check defender is chosen
+		// console.log("empty = " + $(".subDivContainerDfndr").is(':empty'));
+		// if ( $(".subDivContainerDfndr").is(':empty') ){
+		// 	$(".pTagAttackPwr").text("");
+		// 	$(".pTagCounterAttackPwr").text("Choose enemy to fight.");			
+		// }
+		// else 
+		  	attackClicked();
+		
 		// debugger;
 		return false;
 	});

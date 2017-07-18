@@ -269,6 +269,7 @@
 			}
 			else {
 				$("#"+dfndrID).parent().remove();
+				defeatFlag = false;
 				$(".pTagAttackPwr").text("");
 				$(".pTagCounterAttackPwr").text("You have defeated " + dfndrName + 
 					", you can choose to fight another enemy.");
@@ -402,7 +403,7 @@ $(document).ready(function() {
 				"imgClassDfndrChar", "subDivContainerDfndr", "divClassDfndrCharImg");		
 			// alert("inside if true - solo");
 		}
-
+		defeatFlag = true;
 		// alert("end");
 		$(".subDivContainerDfndr").css({"background": "black", "border-color": "green"});
 		$(".subDivContainerDfndr").children().css({"color": "white"});
@@ -412,14 +413,13 @@ $(document).ready(function() {
 
 	$(".attack").on("click", function() {
 		//check defender is chosen
-		// console.log("empty = " + $(".subDivContainerDfndr").is(':empty'));
-		// if ( $(".subDivContainerDfndr").is(':empty') ){
-		// 	$(".pTagAttackPwr").text("");
-		// 	$(".pTagCounterAttackPwr").text("Choose enemy to fight.");			
-		// }
-		// else 
-		  	attackClicked();
-		
+		console.log("empty = " + defeatFlag);
+		if ( !defeatFlag ){
+			$(".pTagAttackPwr").text("");
+			$(".pTagCounterAttackPwr").text("Choose enemy to fight.");			
+		}
+		else 
+		  	attackClicked();		
 		// debugger;
 		return false;
 	});
